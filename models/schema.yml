@@ -6,3 +6,5 @@ sources:
       - name: customer
       - name: order
       - name: address
+      - name: product
+      - name: order_product
