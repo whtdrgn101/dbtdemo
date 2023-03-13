@@ -47,6 +47,7 @@ SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
+ALTER TABLE mart.fct_order OWNER TO postgres;
 
 --
 -- Name: address; Type: TABLE; Schema: raw; Owner: postgres
@@ -164,6 +165,53 @@ ALTER SEQUENCE raw.order_id_seq OWNED BY raw."order".id;
 
 
 --
+-- Name: order_product; Type: TABLE; Schema: raw; Owner: postgres
+--
+
+CREATE TABLE raw.order_product (
+    order_id integer NOT NULL,
+    product_id integer NOT NULL,
+    purchased_price double precision NOT NULL
+);
+
+
+ALTER TABLE raw.order_product OWNER TO postgres;
+
+--
+-- Name: product; Type: TABLE; Schema: raw; Owner: postgres
+--
+
+CREATE TABLE raw.product (
+    id integer NOT NULL,
+    name character varying(100) NOT NULL,
+    base_price double precision NOT NULL
+);
+
+
+ALTER TABLE raw.product OWNER TO postgres;
+
+--
+-- Name: product_id_seq; Type: SEQUENCE; Schema: raw; Owner: postgres
+--
+
+CREATE SEQUENCE raw.product_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE raw.product_id_seq OWNER TO postgres;
+
+--
+-- Name: product_id_seq; Type: SEQUENCE OWNED BY; Schema: raw; Owner: postgres
+--
+
+ALTER SEQUENCE raw.product_id_seq OWNED BY raw.product.id;
+
+--
 -- Name: address id; Type: DEFAULT; Schema: raw; Owner: postgres
 --
 
@@ -182,6 +230,95 @@ ALTER TABLE ONLY raw.customer ALTER COLUMN id SET DEFAULT nextval('raw.customer_
 --
 
 ALTER TABLE ONLY raw."order" ALTER COLUMN id SET DEFAULT nextval('raw.order_id_seq'::regclass);
+
+
+--
+-- Name: product id; Type: DEFAULT; Schema: raw; Owner: postgres
+--
+
+ALTER TABLE ONLY raw.product ALTER COLUMN id SET DEFAULT nextval('raw.product_id_seq'::regclass);
+
+--
+-- Data for Name: address; Type: TABLE DATA; Schema: raw; Owner: postgres
+--
+
+COPY raw.address (id, address_line_1, address_line_2, address_line_3, city, state, postal_code, name, customer_id) FROM stdin;
+1	2873 Myersville Rd	\N	\N	Uniontown	OH	44685	Home	1
+2	2873 Myersville Rd	\N	\N	Uniontown	OH	44685	Home	2
+\.
+
+
+--
+-- Data for Name: customer; Type: TABLE DATA; Schema: raw; Owner: postgres
+--
+
+COPY raw.customer (id, first_name, last_name, primary_phone, primary_email) FROM stdin;
+1	Timothy	DeWees	234-458-3088	timothy.dewees@gmail.com
+2	Kristina	DeWees	330-205-7798	floodthelast@yahoo.com
+\.
+
+
+--
+-- Data for Name: order; Type: TABLE DATA; Schema: raw; Owner: postgres
+--
+
+COPY raw."order" (order_date, total, shipping_address_id, user_id, id) FROM stdin;
+2023-03-12	45.53	2	2	1
+2023-03-12	595.82	1	1	2
+\.
+
+
+--
+-- Data for Name: order_product; Type: TABLE DATA; Schema: raw; Owner: postgres
+--
+
+COPY raw.order_product (order_id, product_id, purchased_price) FROM stdin;
+1	1	1195
+1	2	1195
+1	3	1295
+2	1	1195
+2	2	1195
+2	3	1495
+\.
+
+
+--
+-- Data for Name: product; Type: TABLE DATA; Schema: raw; Owner: postgres
+--
+
+COPY raw.product (id, name, base_price) FROM stdin;
+1	Les Paul Standard	1656.34
+2	Fender Stratocaster - Player Series	1956.34
+3	Ernie Ball Music Man Axis Deluxe	2385
+\.
+
+
+--
+-- Name: address_id_seq; Type: SEQUENCE SET; Schema: raw; Owner: postgres
+--
+
+SELECT pg_catalog.setval('raw.address_id_seq', 2, true);
+
+
+--
+-- Name: customer_id_seq; Type: SEQUENCE SET; Schema: raw; Owner: postgres
+--
+
+SELECT pg_catalog.setval('raw.customer_id_seq', 2, true);
+
+
+--
+-- Name: order_id_seq; Type: SEQUENCE SET; Schema: raw; Owner: postgres
+--
+
+SELECT pg_catalog.setval('raw.order_id_seq', 2, true);
+
+
+--
+-- Name: product_id_seq; Type: SEQUENCE SET; Schema: raw; Owner: postgres
+--
+
+SELECT pg_catalog.setval('raw.product_id_seq', 3, true);
 
 
 --
@@ -209,6 +346,14 @@ ALTER TABLE ONLY raw."order"
 
 
 --
+-- Name: product product_pkey; Type: CONSTRAINT; Schema: raw; Owner: postgres
+--
+
+ALTER TABLE ONLY raw.product
+    ADD CONSTRAINT product_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: address address_customer_id_fkey; Type: FK CONSTRAINT; Schema: raw; Owner: postgres
 --
 
@@ -222,6 +367,22 @@ ALTER TABLE ONLY raw.address
 
 ALTER TABLE ONLY raw."order"
     ADD CONSTRAINT order_billing_address_id_fkey FOREIGN KEY (shipping_address_id) REFERENCES raw.address(id);
+
+
+--
+-- Name: order_product order_product_order_id_fkey; Type: FK CONSTRAINT; Schema: raw; Owner: postgres
+--
+
+ALTER TABLE ONLY raw.order_product
+    ADD CONSTRAINT order_product_order_id_fkey FOREIGN KEY (order_id) REFERENCES raw."order"(id);
+
+
+--
+-- Name: order_product order_product_product_id_fkey; Type: FK CONSTRAINT; Schema: raw; Owner: postgres
+--
+
+ALTER TABLE ONLY raw.order_product
+    ADD CONSTRAINT order_product_product_id_fkey FOREIGN KEY (product_id) REFERENCES raw.product(id);
 
 
 --
