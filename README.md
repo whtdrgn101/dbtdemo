@@ -1,10 +1,13 @@
-Welcome to your new dbt project!
+# DBT Demo Project
 
-### Using the starter project
+### Overview
+This project works through a series of DBT concepts and acts as a test-bed for learning how to work with DBT for building ETL jobs differently.  It starts with a simple PostgreSQL database which can be created by running the SQL scripts contained in the `source` folder.  
 
-Try running the following commands:
-- dbt run
-- dbt test
+From there, the basic DBT command of:
+- `dbt run`
+
+### Notes:
+- You will need to setup a profile.yml file in your `~/.dbt` folder to enable the database connection.  For this demo, I used the default `template1` database that gets setup with a simple PostgreSQL install (version 14 for this project).
 
 
 ### Resources:
