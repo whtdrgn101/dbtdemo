@@ -1,14 +1,8 @@
-
-  
-    
-
-  create  table "template1"."mart"."dim_order__dbt_tmp"
-  as (
-    with orders as (
-	select * from "template1"."staging"."stg_order"
+with orders as (
+	select * from {{ ref('stg_order') }}
 ),
 op as (
-	select * from "template1"."staging"."stg_order_product"
+	select * from {{ ref('stg_order_product') }}
 ),
 final as (
 	select 
@@ -22,6 +16,4 @@ final as (
 	left join op on orders.order_id = op.order_id
 )
 select * 
-from final
-  );
-  
+from final 
