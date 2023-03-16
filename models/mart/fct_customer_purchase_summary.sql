@@ -1,8 +1,5 @@
 with orders as (
-	select * from {{ ref('stg_order') }}
-),
-op as (
-	select * from {{ ref('stg_order_product') }}
+	select * from {{ ref('dim_order') }}
 ),
 dt as (
 	select * from {{ ref('dim_date') }}
@@ -13,9 +10,8 @@ final as (
 		dt.year,
 		dt.quarter,
 		dt.month,
-		sum(op.purchased_price)
+		sum(orders.purchased_price)
 	from orders
-	left join op on op.order_id = orders.order_id
 	left join dt on orders.order_date = dt.date_key
 	group by customer_id, dt.year, dt.quarter, dt.month
 )
