@@ -36,3 +36,30 @@ models:
     mart:
       +schema: mart
       +materialized: table
+      tables:
+        - name: dim_customer
+          identifier: dim_customer 
+          description: Customers recorded in operational system.  There will be one record in this table for each customer and address combination recorded in the operational system.
+        - name: dim_product
+          identifier: dim_product
+          description: Products recorded in the operational system.  There will be one record in this table for each product in the operational system.
+        - name: fct_product_profitability
+          identifier: fct_product_profitability
+          description: Records the profitability for each product sold by year, quarter, month by caluclating the total purchased price on an order and subtracting the supplier price recorded on the product definition.
+          columns:
+          - name: product_id
+            description: Foreign Key to dim_product which identifies the specific product purchased.
+          - name: year
+            description: The year the product's profitability is being calculated for.
+          - name: quarter
+            description: The quarter the product's profitability is being calculated for.
+          - name: month
+            description: The month the product's profitability is being caluclated for.
+          - name: volume
+            description: The total number of purchased products included in this calculation.
+          - name: cost
+            description: The cost of purchasing the product from the supplier/manufacturer.
+          - name: received
+            description: The cost the product was sold to the customer.
+          - name: profit
+            description: The amount of profit the company earned on the sale of that product (received - cost).
