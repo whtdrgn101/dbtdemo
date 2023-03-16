@@ -8,7 +8,7 @@ dt as (
 	select * from "template1"."mart"."dim_date"
 ),
 prod as (
-	select * from "template1"."staging"."stg_product"
+	select * from "template1"."mart"."dim_product"
 ),
 final as (
 	select 

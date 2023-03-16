@@ -2,10 +2,42 @@ version: 2
 models:
   - name: dim_customer
     identifier: dim_customer
-    description: Customers recorded in operational system.  There will be one record in this table for each customer and address combination recorded in the operational system.
+    description: Customers recorded in operational system.  There will be one record in this table for each customer and address combination recorded in the operational system so there is a multipart key of dim_customer.customer_id AND dim_customer.address_id
   - name: dim_product
     identifier: dim_product
     description: Products recorded in the operational system.  There will be one record in this table for each product in the operational system.
+  - name: fct_customer_purchase_history
+    identifier: fct_customer_purchase_history 
+    description: Records a customers purchases over the lifetime of the customer grouped by year, qurter, month and summing all order totals
+    columns:
+      - name: customer_id
+        description: Provides a customer_id to join to dim_customer for customer attributes
+      - name: year
+        description: The year the customers orders are being totaled for
+      - name: quarter
+        description: The quarter the customers orders are being totaled for
+      - name: month
+        description: The month the customers orders are being totaled for
+      - name: sum
+        description: The order total for the given customer for the grouping
+  - name: fct_order
+    identifier: fct_order
+    description: Records the orders and allows for basic analysis of orders over customer, product, and date dimensions
+    columns:
+      - name: order_id
+        description: Uniquely identifies the order
+      - name: customer_id
+        description: Provides a customer_id to join to dim_customer (Will also need address_id)
+      - name: product_id
+        description: Acts as a foreign key to the dim_product table for product information
+      - name: shipping_address_id
+        description: Provides the rest of the key for the dim_customer table and indicates the shipping address for the order
+      - name: date_key
+        description: Acts as a foreign key to the dim_date table and allows for slicing of orders by date attributes
+      - name: purchased_price
+        description: Describes the purchase price for the product on the order.
+      - name: discount_pct
+        description: Describes the discount from dim_product.base_price applies to the order.  
   - name: fct_product_profitability
     identifier: fct_product_profitability
     description: Records the profitability for each product sold by year, quarter, month by caluclating the total purchased price on an order and subtracting the supplier price recorded on the product definition.

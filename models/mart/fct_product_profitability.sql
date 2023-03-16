@@ -8,7 +8,7 @@ dt as (
 	select * from {{ ref('dim_date') }}
 ),
 prod as (
-	select * from {{ ref('stg_product') }}
+	select * from {{ ref('dim_product') }}
 ),
 final as (
 	select 
