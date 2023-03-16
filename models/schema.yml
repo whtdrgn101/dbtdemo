@@ -6,8 +6,8 @@ models:
   - name: dim_product
     identifier: dim_product
     description: Products recorded in the operational system.  There will be one record in this table for each product in the operational system.
-  - name: fct_customer_purchase_history
-    identifier: fct_customer_purchase_history 
+  - name: fct_customer_purchase_summary
+    identifier: fct_customer_purchase_summary
     description: Records a customers purchases over the lifetime of the customer grouped by year, qurter, month and summing all order totals
     columns:
       - name: customer_id
