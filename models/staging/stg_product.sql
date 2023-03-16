@@ -5,6 +5,7 @@ renamed as (
 	select 
 		id as product_id,
 		name,
+		supplier_price,
 		base_price
 	from source
 )

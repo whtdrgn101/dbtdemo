@@ -184,6 +184,7 @@ ALTER TABLE raw.order_product OWNER TO postgres;
 CREATE TABLE raw.product (
     id integer NOT NULL,
     name character varying(100) NOT NULL,
+    supplier_price double precision NOT NULL
     base_price double precision NOT NULL
 );
 
@@ -286,10 +287,10 @@ COPY raw.order_product (order_id, product_id, purchased_price) FROM stdin;
 -- Data for Name: product; Type: TABLE DATA; Schema: raw; Owner: postgres
 --
 
-COPY raw.product (id, name, base_price) FROM stdin;
-1	Les Paul Standard	1656.34
-2	Fender Stratocaster - Player Series	1956.34
-3	Ernie Ball Music Man Axis Deluxe	2385
+COPY raw.product (id, name, supplier_price, base_price) FROM stdin;
+1	Les Paul Standard	750.11	1656.34
+2	Fender Stratocaster - Player Series	1195.11	1956.34
+3	Ernie Ball Music Man Axis Deluxe	1300	2385
 \.
 
 
