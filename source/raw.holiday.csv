@@ -1,0 +1,21 @@
+date_key,name,is_work_day
+01-01-2023,New Year's Day,false
+01-02-2023,New Year's Day (in lieu),false
+01-16-2023,Martin Luther King Jr. Day,false
+02-20-2023,Pesident's Day,true
+02-09-2023,Easter Sunday,false
+05-14-2023,Mother's Day,false
+05-29-2023,Memorial Day,false
+06-18-2023,Father's Day,false
+06-19-2023,Juneteenth,false
+07-04-2023,Independence Day,false
+09-04-2023,Labor Day,false
+10-02-2023,Cabrini Day,true
+10-09-2023,Columbus Day,true
+11-10-2023,Veteran's Day,false
+11-11-2023,Veteran's Day,false
+11-12-2023,Veteran's Day,false
+11-23-2023,Thanksgiving,false
+11-24-2023,Day After Thanksgiving,false
+12-25-2023,Christmas,false
+12-31-2023,New Year's Eve,false

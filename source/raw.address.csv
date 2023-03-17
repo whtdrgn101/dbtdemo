@@ -1,0 +1,6 @@
+customer_id,name,address_line_1,address_line_2address_line_3,city,state,postal_code
+1,Home,1313 Mocking Bird Lane,,,Scranton,PA,18503
+1,Work,101 Main Street,Suite 2,,Scranton,PA,18515
+2,Home,2912 Bird Street,Appartment B,,North Canton,OH,44720
+3,Home,1234 El Cajon St,,,Los Angeles,CA,90001
+3,Work,87421 Tipton Ave,Suite 14,Floor 3,Los Angeles,CA,90012

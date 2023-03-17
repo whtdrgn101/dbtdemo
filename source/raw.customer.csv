@@ -1,0 +1,4 @@
+first_name,last_name,customer_since_date,primary_phone,primary_email
+Jane,Doe,2023-01-01,555-123-4567,jane.dow@email.com
+John,Smith,2022-01-01,555-987-5432,john.smith@email.com
+Peter,Johnson,2021-01-01,555-234-5676,peter.johnson@email.com
