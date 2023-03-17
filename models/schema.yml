@@ -73,3 +73,5 @@ sources:
         description: Raw product table copied from from the operational database
       - name: order_product
         description: Raw OrderProduct table copied from from the operational database
+      - name: holiday
+        description: Raw list of company observed holidays 
