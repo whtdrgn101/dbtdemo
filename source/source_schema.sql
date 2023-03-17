@@ -176,6 +176,7 @@ CREATE TABLE raw.orders (
     user_id integer NOT NULL,
     order_date date NOT NULL,
     shipping_address_id integer,
+    po_number varchar(100) NULL,
     tax double precision NOT NULL DEFAULT 0.0,
     total double precision
 );
