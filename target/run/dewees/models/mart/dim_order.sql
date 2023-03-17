@@ -15,9 +15,13 @@ final as (
 		orders.order_id,
 		orders.customer_id,
 		orders.shipping_address_id,
-		op.product_id,
 		orders.order_date,
-		op.purchased_price
+		orders.po_number,
+		orders.tax,
+		op.quantity,
+		op.product_id,
+		op.purchased_price,
+		op.subtotal
 	from orders
 	left join op on orders.order_id = op.order_id
 )

@@ -7,7 +7,6 @@ renamed as (
 	select 
 		date_key,		
 		name,	
-		description,
 		is_work_day
 	from source
 )

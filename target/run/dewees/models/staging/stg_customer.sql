@@ -8,6 +8,7 @@ renamed as (
 		id as customer_id,
 		first_name,
 		last_name,
+		customer_since_date,
 		primary_phone,
 		primary_email
 	from source

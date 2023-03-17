@@ -1,13 +1,15 @@
 with source as (
-	select * from {{ source('raw','order') }}
+	select * from {{ source('raw','orders') }}
 ),
 renamed as (
 	select 
 		id as order_id,
 		user_id as customer_id,		
+		shipping_address_id,
 		order_date,
-		total,
-		shipping_address_id
+		po_number,
+		tax,
+		total
 	from source
 )
 select * 

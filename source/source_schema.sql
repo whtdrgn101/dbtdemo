@@ -24,8 +24,9 @@ DROP SCHEMA IF EXISTS mart CASCADE;
 
 CREATE SCHEMA mart;
 
-
 ALTER SCHEMA mart OWNER TO postgres;
+
+GRANT ALL ON ALL TABLES IN SCHEMA mart to postgres;
 
 --
 -- Name: raw; Type: SCHEMA; Schema: -; Owner: postgres
@@ -38,6 +39,8 @@ CREATE SCHEMA raw;
 
 ALTER SCHEMA raw OWNER TO postgres;
 
+GRANT ALL ON ALL TABLES IN SCHEMA raw to postgres;
+
 --
 -- Name: staging; Type: SCHEMA; Schema: -; Owner: postgres
 --
@@ -46,8 +49,9 @@ DROP SCHEMA IF EXISTS staging CASCADE;
 
 CREATE SCHEMA staging;
 
-
 ALTER SCHEMA staging OWNER TO postgres;
+
+GRANT ALL ON ALL TABLES IN SCHEMA staging to postgres;
 
 SET default_tablespace = '';
 

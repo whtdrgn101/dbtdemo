@@ -7,7 +7,9 @@ renamed as (
 	select 
 		order_id,
 		product_id,
-		purchased_price
+		quantity,
+		purchased_price,
+		subtotal
 	from source
 )
 select * 

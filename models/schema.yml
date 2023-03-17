@@ -65,7 +65,7 @@ sources:
     tables:
       - name: customer
         description: Raw customer table copied from from the operational database
-      - name: order
+      - name: orders
         description: Raw Order table copied from from the operational database
       - name: address
         description: Raw Address table copied from from the operational database
