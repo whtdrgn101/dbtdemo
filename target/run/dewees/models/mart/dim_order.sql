@@ -17,11 +17,12 @@ final as (
 		orders.shipping_address_id,
 		orders.order_date,
 		orders.po_number,
-		orders.tax,
-		op.quantity,
 		op.product_id,
+		op.quantity,
 		op.purchased_price,
-		op.subtotal
+		orders.tax,
+		op.subtotal,
+		(orders.tax * op.subtotal) + op.subtotal as line_total
 	from orders
 	left join op on orders.order_id = op.order_id
 )

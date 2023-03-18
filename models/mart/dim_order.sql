@@ -15,7 +15,8 @@ final as (
 		op.quantity,
 		op.purchased_price,
 		orders.tax,
-		op.subtotal
+		op.subtotal,
+		(orders.tax * op.subtotal) + op.subtotal as line_total
 	from orders
 	left join op on orders.order_id = op.order_id
 )

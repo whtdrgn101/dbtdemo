@@ -10,7 +10,7 @@ final as (
 		dt.year,
 		dt.quarter,
 		dt.month,
-		sum(orders.purchased_price)
+		sum(orders.line_total)
 	from orders
 	left join dt on orders.order_date = dt.date_key
 	group by customer_id, dt.year, dt.quarter, dt.month

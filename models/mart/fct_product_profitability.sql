@@ -13,10 +13,10 @@ final as (
 		dt.year,
 		dt.quarter,
 		dt.month,
-		count(orders.product_id) as volume,
-		sum(prod.supplier_price) as cost,
-		sum(orders.purchased_price) as received,
-		( sum(orders.purchased_price) - sum(prod.supplier_price) ) as profit
+		sum(orders.quantity) as volume,
+		sum(prod.supplier_price * orders.quantity) as cost,
+		sum(orders.subtotal) as received,
+		( sum(orders.subtotal) - sum(prod.supplier_price * orders.quantity) ) as profit
 	from orders
 	left join prod on orders.product_id = prod.product_id
 	left join dt on orders.order_date = dt.date_key

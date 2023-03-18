@@ -48,3 +48,14 @@ COPY raw.order_product(order_id,product_id,quantity,purchased_price,subtotal)
 FROM '/tmp/raw.order_product.csv'
 DELIMITER ','
 CSV HEADER;
+
+--
+-- Fix order_product data (default to 5% savings for all purchases)
+--
+update raw.order_product set purchased_price = (select max(( base_price - (base_price * .05))) from raw.product where id=raw.order_product.product_id);
+update raw.order_product set subtotal = quantity * purchased_price;
+
+--
+-- Fix order total
+--
+update raw.orders set total = (select ( sum(op.subtotal) + (max(o.tax) * sum(op.subtotal))) from raw.orders as o inner join raw.order_product as op on o.id = op.order_id where op.order_id = raw.orders.id);
