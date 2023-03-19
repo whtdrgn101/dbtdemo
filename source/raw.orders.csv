@@ -1,4 +1,4 @@
-user_id,order_date,shipping_address_id,po_number,tax,total
+customer_id,order_date,shipping_address_id,po_number,tax,total
 1,2023-01-01,1,,.065,5000
 1,2023-01-11,1,,.065,4985
 1,2023-02-02,2,PO-12345,0.066,11234.12

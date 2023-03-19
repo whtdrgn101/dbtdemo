@@ -177,7 +177,7 @@ DROP TABLE IF EXISTS raw.orders CASCADE;
 
 CREATE TABLE raw.orders (
     id integer NOT NULL,
-    user_id integer NOT NULL,
+    customer_id integer NOT NULL,
     order_date date NOT NULL,
     shipping_address_id integer,
     po_number varchar(100) NULL,
@@ -215,6 +215,7 @@ ALTER SEQUENCE raw.order_id_seq OWNED BY raw.orders.id;
 --
 
 CREATE TABLE raw.order_product (
+    id integer NOT NULL,
     order_id integer NOT NULL,
     product_id integer NOT NULL,
     quantity integer not null default 1,
@@ -222,6 +223,13 @@ CREATE TABLE raw.order_product (
     subtotal double precision NOT NULL
 );
 
+CREATE SEQUENCE raw.order_product_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
 ALTER TABLE raw.order_product OWNER TO postgres;
 
@@ -291,6 +299,12 @@ ALTER TABLE ONLY raw.orders ALTER COLUMN id SET DEFAULT nextval('raw.order_id_se
 
 
 --
+-- Name: order id; Type: DEFAULT; Schema: raw; Owner: postgres
+--
+
+ALTER TABLE ONLY raw.order_product ALTER COLUMN id SET DEFAULT nextval('raw.order_product_id_seq'::regclass);
+
+--
 -- Name: product id; Type: DEFAULT; Schema: raw; Owner: postgres
 --
 
@@ -327,6 +341,12 @@ ALTER TABLE ONLY raw.customer
 ALTER TABLE ONLY raw.orders
     ADD CONSTRAINT order_pkey PRIMARY KEY (id);
 
+--
+-- Name: order_product order_product_pkey; Type: CONSTRAINT; Schema: raw; Owner: postgres
+--
+
+ALTER TABLE ONLY raw.order_product
+    ADD CONSTRAINT order_product_pkey PRIMARY KEY (id);
 
 --
 -- Name: product product_pkey; Type: CONSTRAINT; Schema: raw; Owner: postgres
@@ -369,10 +389,10 @@ ALTER TABLE ONLY raw.order_product
 
 
 --
--- Name: order order_user_id_fkey; Type: FK CONSTRAINT; Schema: raw; Owner: postgres
+-- Name: order order_customer_id_fkey; Type: FK CONSTRAINT; Schema: raw; Owner: postgres
 --
 
 ALTER TABLE ONLY raw.orders
-    ADD CONSTRAINT order_user_id_fkey FOREIGN KEY (user_id) REFERENCES raw.customer(id);
+    ADD CONSTRAINT order_customer_id_fkey FOREIGN KEY (customer_id) REFERENCES raw.customer(id);
 
 

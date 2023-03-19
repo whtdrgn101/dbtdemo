@@ -38,8 +38,10 @@ CSV HEADER;
 
 
 ALTER SEQUENCE raw.order_id_seq RESTART WITH 1;
+ALTER SEQUENCE raw.order_product_id_seq RESTART WITH 1;
 
-COPY raw.orders(user_id,order_date,shipping_address_id,po_number,tax,total)
+
+COPY raw.orders(customer_id,order_date,shipping_address_id,po_number,tax,total)
 FROM '/tmp/raw.orders.csv'
 DELIMITER ','
 CSV HEADER;
