@@ -1,8 +1,8 @@
 with orders as (
-	select * from "template1"."mart"."dim_order"
+	select * from "orders"."mart"."dim_order"
 ),
 products as (
-	select * from "template1"."mart"."dim_product"
+	select * from "orders"."mart"."dim_product"
 ),
 final as (
 	select 

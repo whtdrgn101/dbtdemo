@@ -1,5 +1,5 @@
 with prod as (
-	select * from "template1"."staging"."stg_product"
+	select * from "orders"."staging"."stg_product"
 ),
 final as (
 	select 

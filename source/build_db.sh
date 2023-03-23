@@ -6,7 +6,7 @@ echo "Copying data files to tmp"
 cp ./*.csv /tmp
 
 if [$db_name = ""]; then
-    db_name=template1
+    db_name=postgres
 fi
 
 echo "Building Database - $db_name"

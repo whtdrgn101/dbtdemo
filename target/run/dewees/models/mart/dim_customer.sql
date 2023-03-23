@@ -2,13 +2,13 @@
   
     
 
-  create  table "template1"."mart"."dim_customer__dbt_tmp"
+  create  table "orders"."mart"."dim_customer__dbt_tmp"
   as (
     with customers as (
-	select * from "template1"."staging"."stg_customer"
+	select * from "orders"."staging"."stg_customer"
 ),
 addresses as (
-	select * from "template1"."staging"."stg_address"
+	select * from "orders"."staging"."stg_address"
 ),
 final as (
 	select 

@@ -2,13 +2,13 @@
   
     
 
-  create  table "template1"."mart"."fct_customer_purchase_summary__dbt_tmp"
+  create  table "orders"."mart"."fct_customer_purchase_summary__dbt_tmp"
   as (
     with orders as (
-	select * from "template1"."mart"."dim_order"
+	select * from "orders"."mart"."dim_order"
 ),
 dt as (
-	select * from "template1"."mart"."dim_date"
+	select * from "orders"."mart"."dim_date"
 ),
 final as (
 	select 

@@ -61,7 +61,7 @@ models:
 
 sources:
   - name: raw 
-    database: template1
+    database: orders
     tables:
       - name: customer
         description: Raw customer table copied from from the operational database

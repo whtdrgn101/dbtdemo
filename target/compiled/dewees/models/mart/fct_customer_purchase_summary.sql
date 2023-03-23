@@ -1,8 +1,8 @@
 with orders as (
-	select * from "template1"."mart"."dim_order"
+	select * from "orders"."mart"."dim_order"
 ),
 dt as (
-	select * from "template1"."mart"."dim_date"
+	select * from "orders"."mart"."dim_date"
 ),
 final as (
 	select 

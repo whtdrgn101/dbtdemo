@@ -19,6 +19,11 @@ SET row_security = off;
 --
 -- Name: mart; Type: SCHEMA; Schema: -; Owner: postgres
 --
+DROP DATABASE IF EXISTS orders;
+
+CREATE DATABASE orders OWNER = postgres;
+
+USE orders;
 
 DROP SCHEMA IF EXISTS mart CASCADE;
 

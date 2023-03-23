@@ -1,8 +1,8 @@
 with orders as (
-	select * from "template1"."staging"."stg_order"
+	select * from "orders"."staging"."stg_order"
 ),
 op as (
-	select * from "template1"."staging"."stg_order_product"
+	select * from "orders"."staging"."stg_order_product"
 ),
 final as (
 	select 

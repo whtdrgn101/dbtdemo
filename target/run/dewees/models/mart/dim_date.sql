@@ -2,7 +2,7 @@
   
     
 
-  create  table "template1"."mart"."dim_date__dbt_tmp"
+  create  table "orders"."mart"."dim_date__dbt_tmp"
   as (
     WITH date_spine AS
 (
@@ -159,7 +159,7 @@ select * from filtered
 
 ),
 holidays as (
-	select * from "template1"."staging"."stg_holiday"
+	select * from "orders"."staging"."stg_holiday"
 ),
 scrubbed as ( 
   SELECT

@@ -1,7 +1,7 @@
 
-  create view "template1"."staging"."stg_product__dbt_tmp" as (
+  create view "orders"."staging"."stg_product__dbt_tmp" as (
     with source as (
-	select * from "template1"."raw"."product"
+	select * from "orders"."raw"."product"
 ),
 renamed as (
 	select 

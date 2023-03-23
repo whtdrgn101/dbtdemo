@@ -153,7 +153,7 @@ select * from filtered
 
 ),
 holidays as (
-	select * from "template1"."staging"."stg_holiday"
+	select * from "orders"."staging"."stg_holiday"
 ),
 scrubbed as ( 
   SELECT
