@@ -7,8 +7,8 @@ From there, the basic DBT command of:
 - `dbt run`
 
 ### Notes:
-- You will need to setup a profile.yml file in your `~/.dbt` folder to enable the database connection.  For this demo, I used the default `template1` database that gets setup with a simple PostgreSQL install (version 14 for this project).
-- I inlude the generated documentation in this project so the sharing of the project is easier for people to check that out without getting PostgreSQL up and running.  Just go do the `targets` directory and run `python -m http.server` to launch a quick and dirty webserver then navigate to `http:localhost:8000` in a web-browser to explore the documentation and see the data flow diagrams.
+- You will need to setup a profile.yml file in your `~/.dbt` folder to enable the database connection.  For this demo, I create a database called `orders` with a simple PostgreSQL install (version 14 for this project).  Default username is postgres, modify to your preference.
+- I include the generated documentation in this project so the sharing of the project is easier for people to check that out without getting PostgreSQL up and running.  Just go do the `targets` directory and run `python -m http.server` to launch a quick and dirty webserver then navigate to `http:localhost:8000` in a web-browser to explore the documentation and see the data flow diagrams.
 
 
 ### Resources:
