@@ -1,9 +1,12 @@
+{% set now = modules.datetime.datetime.now() %}
+{% set now_plus_six_years = (now + modules.datetime.timedelta(6*365)).isoformat() %}
+
 WITH date_spine AS
 (
 	{{ dbt_utils.date_spine(
 		datepart="day",
 		start_date="to_date('01/01/1950', 'mm/dd/yyyy')",
-		end_date="to_date('12/31/2030','mm/dd/yyy')"
+		end_date="to_date('" + now_plus_six_years + "', 'yyyy-mm-dd')"
 	)
 	}}
 ),
