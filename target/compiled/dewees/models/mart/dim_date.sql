@@ -123,7 +123,7 @@ with rawdata as (
 
     select *
     from unioned
-    where generated_number <= 28947
+    where generated_number <= 28949
     order by generated_number
 
 
@@ -147,7 +147,7 @@ filtered as (
 
     select *
     from all_periods
-    where date_day <= to_date('2029-04-03T18:22:42.830435', 'yyyy-mm-dd')
+    where date_day <= to_date('2029-04-05T09:25:31.067021', 'yyyy-mm-dd')
 
 )
 

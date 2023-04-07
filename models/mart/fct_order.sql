@@ -12,7 +12,7 @@ final as (
 		orders.shipping_address_id,
 		orders.order_date as date_key,
 		orders.subtotal,
-		(1.0 - orders.purchased_price / products.base_price) as discount_pct
+		(1.0 - {{ get_percentage('orders.purchased_price', 'products.base_price') }} ) as discount_pct
 	from orders
 	left join products on orders.product_id = products.product_id
 )
