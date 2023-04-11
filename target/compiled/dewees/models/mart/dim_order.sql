@@ -1,3 +1,4 @@
+
 with orders as (
 	select * from "orders"."staging"."stg_order"
 ),
@@ -19,6 +20,9 @@ final as (
 		(orders.tax * op.subtotal) + op.subtotal as line_total
 	from orders
 	left join op on orders.order_id = op.order_id
+	
+		where order_date > (select max(order_date) from "orders"."mart"."dim_order")
+	
 )
 select * 
 from final
