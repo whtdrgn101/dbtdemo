@@ -147,7 +147,7 @@ filtered as (
 
     select *
     from all_periods
-    where date_day <= to_date('2029-04-09T16:34:53.004168', 'yyyy-mm-dd')
+    where date_day <= to_date('2029-04-09T17:06:17.642649', 'yyyy-mm-dd')
 
 )
 

@@ -26,7 +26,7 @@ final as (
 	from orders
 	left join op on orders.order_id = op.order_id
 	{% if is_incremental() %}
-		where order_date > (select max(order_date) from {{ this }})
+		where orders.order_date > (select max(order_date) from {{ this }})
 	{% endif %}
 )
 select * 
