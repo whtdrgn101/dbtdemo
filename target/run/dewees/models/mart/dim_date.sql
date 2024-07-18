@@ -3,7 +3,11 @@
     
 
   create  table "orders"."mart"."dim_date__dbt_tmp"
-  as (
+  
+  
+    as
+  
+  (
     
 
 
@@ -129,7 +133,7 @@ with rawdata as (
 
     select *
     from unioned
-    where generated_number <= 28953
+    where generated_number <= 29417
     order by generated_number
 
 
@@ -153,7 +157,7 @@ filtered as (
 
     select *
     from all_periods
-    where date_day <= to_date('2029-04-09T17:06:17.642649', 'yyyy-mm-dd')
+    where date_day <= to_date('2030-07-17T13:48:26.700100', 'yyyy-mm-dd')
 
 )
 

@@ -3,7 +3,11 @@
     
 
   create  table "orders"."mart"."dim_product__dbt_tmp"
-  as (
+  
+  
+    as
+  
+  (
     with prod as (
 	select * from "orders"."staging"."stg_product"
 ),

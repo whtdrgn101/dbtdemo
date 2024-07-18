@@ -3,7 +3,11 @@
     
 
   create  table "orders"."mart"."fct_order__dbt_tmp"
-  as (
+  
+  
+    as
+  
+  (
     with orders as (
 	select * from "orders"."mart"."dim_order"
 ),

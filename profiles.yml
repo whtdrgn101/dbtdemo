@@ -1,0 +1,14 @@
+dewees:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost 
+      user: postgres 
+      password: [CHANGE-ME]
+      port: 5432
+      dbname: orders
+      schema: raw
+      threads: 2
+      keepalives_idle: 0
+      connect_timeout: 10

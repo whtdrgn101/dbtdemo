@@ -3,9 +3,6 @@
 ### Overview
 This project works through a series of DBT concepts and acts as a test-bed for learning how to work with DBT for building ETL jobs differently.  It starts with a simple PostgreSQL database which can be created by running the SQL scripts contained in the `source` folder.  
 
-From there, the basic DBT command of:
-- `dbt run`
-
 ### Notes:
 - Database Setup:
     - Install Postgres >= v14
@@ -19,8 +16,14 @@ From there, the basic DBT command of:
         - Linux/Mac: `source venv\bin\activate` || Windows: `venv\Scripts\activate.bat`
         - `pip install --upgrade pip`
         - `pip install -r requirements.txt`
-    - Install DBT modules by running the following command:
+    - Install DBT modules by running the following command from the project root:
         - `dbt deps`
+    - Setup the DBT Profile by running the following commands from the project root:
+        - `mkdir ~/.dbt`
+        - `cp profiles.yml ~/.dbt`
+    - Edit the profiles.yml file to contain the postgres user password specified in your postgres setup
+
+    - 
 - Running DBT:
     - Run the following command to run DBT: `dbt run`
     - Just go do the `targets` directory and run `python -m http.server` to launch a quick and dirty webserver then navigate to `http:localhost:8000` in a web-browser to explore the documentation and see the data flow diagrams.
