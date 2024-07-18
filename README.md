@@ -7,8 +7,23 @@ From there, the basic DBT command of:
 - `dbt run`
 
 ### Notes:
-- You will need to setup a profile.yml file in your `~/.dbt` folder to enable the database connection.  For this demo, I create a database called `orders` with a simple PostgreSQL install (version 14 for this project).  Default username is postgres, modify to your preference.
-- I include the generated documentation in this project so the sharing of the project is easier for people to check that out without getting PostgreSQL up and running.  Just go do the `targets` directory and run `python -m http.server` to launch a quick and dirty webserver then navigate to `http:localhost:8000` in a web-browser to explore the documentation and see the data flow diagrams.
+- Database Setup:
+    - Install Postgres >= v14
+    - Create a database in Postgres called `orders`
+    - Run the "build_db.sh" script within the `source` folder of the project root
+- DBT Setup:
+    - Install a version of Python >= 3.8
+    - Create the Python virtual environment by running this command from the command line of the project root: `python3 -m venv venv`
+        - ***NOTE*** Windows the command might be `python -m venv venv`
+    - Update PIP by running the following commands:
+        - Linux/Mac: `source venv\bin\activate` || Windows: `venv\Scripts\activate.bat`
+        - `pip install --upgrade pip`
+        - `pip install -r requirements.txt`
+    - Install DBT modules by running the following command:
+        - `dbt deps`
+- Running DBT:
+    - Run the following command to run DBT: `dbt run`
+    - Just go do the `targets` directory and run `python -m http.server` to launch a quick and dirty webserver then navigate to `http:localhost:8000` in a web-browser to explore the documentation and see the data flow diagrams.
 
 
 ### Resources:
