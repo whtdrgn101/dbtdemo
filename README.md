@@ -20,10 +20,10 @@ This project works through a series of DBT concepts and acts as a test-bed for l
         - `dbt deps`
     - Setup the DBT Profile by running the following commands from the project root:
         - `mkdir ~/.dbt`
-        - `cp profiles.yml ~/.dbt`
+        - `cp template_profiles.yml ~/.dbt/profile.yml`
     - Edit the profiles.yml file to contain the postgres user password specified in your postgres setup
 - Running DBT:
-    - Run the following command to run DBT: `dbt run`
+    - Run the following command from the project root: `dbt run`
     - Just go do the `targets` directory and run `python -m http.server` to launch a quick and dirty webserver then navigate to `http:localhost:8000` in a web-browser to explore the documentation and see the data flow diagrams.
 
 
