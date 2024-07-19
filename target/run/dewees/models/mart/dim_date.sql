@@ -157,7 +157,7 @@ filtered as (
 
     select *
     from all_periods
-    where date_day <= to_date('2030-07-18T09:46:07.655737', 'yyyy-mm-dd')
+    where date_day <= to_date('2030-07-18T10:29:08.394774', 'yyyy-mm-dd')
 
 )
 

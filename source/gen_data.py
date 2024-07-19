@@ -66,4 +66,7 @@ for c in range(100):
                 25.0,
                 25.0
             ))
+
+conn.commit()
+conn.close()
         
