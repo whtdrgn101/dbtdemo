@@ -145,7 +145,7 @@ CREATE TABLE raw.customer (
     first_name character varying(100) NOT NULL,
     last_name character varying(100) NOT NULL,
     customer_since_date date NULL,
-    primary_phone character varying(20) NOT NULL,
+    primary_phone character varying(30) NOT NULL,
     primary_email character varying(255)
 );
 
