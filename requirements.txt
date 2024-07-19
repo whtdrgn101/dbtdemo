@@ -14,6 +14,7 @@ dbt-extractor==0.5.1
 dbt-postgres==1.8.2
 dbt-semantic-interfaces==0.5.1
 deepdiff==7.0.1
+Faker==26.0.0
 idna==3.7
 importlib-metadata==6.11.0
 isodate==0.6.1

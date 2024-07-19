@@ -1,40 +1,24 @@
 
       
-  
+        
+            delete from "orders"."mart"."dim_order"
+            using "dim_order__dbt_tmp094607708422"
+            where (
+                
+                    "dim_order__dbt_tmp094607708422".order_id = "orders"."mart"."dim_order".order_id
+                    and 
+                
+                    "dim_order__dbt_tmp094607708422".product_id = "orders"."mart"."dim_order".product_id
+                    
+                
+                
+            );
+        
     
 
-  create  table "orders"."mart"."dim_order"
-  
-  
-    as
-  
-  (
-    
-with orders as (
-	select * from "orders"."staging"."stg_order"
-),
-op as (
-	select * from "orders"."staging"."stg_order_product"
-),
-final as (
-	select 
-		orders.order_id,
-		orders.customer_id,
-		orders.shipping_address_id,
-		orders.order_date,
-		orders.po_number,
-		op.product_id,
-		op.quantity,
-		op.purchased_price,
-		orders.tax,
-		op.subtotal,
-		(orders.tax * op.subtotal) + op.subtotal as line_total
-	from orders
-	left join op on orders.order_id = op.order_id
-	
-)
-select * 
-from final
-  );
-  
+    insert into "orders"."mart"."dim_order" ("order_id", "customer_id", "shipping_address_id", "order_date", "po_number", "product_id", "quantity", "purchased_price", "tax", "subtotal", "line_total")
+    (
+        select "order_id", "customer_id", "shipping_address_id", "order_date", "po_number", "product_id", "quantity", "purchased_price", "tax", "subtotal", "line_total"
+        from "dim_order__dbt_tmp094607708422"
+    )
   
